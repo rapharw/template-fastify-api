@@ -1,0 +1,32 @@
+{
+  "name": "template-fastify-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rapharw/template-fastify-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rapharw/template-fastify-api/issues"
+  },
+  "homepage": "https://github.com/rapharw/template-fastify-api#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "fastify": "^3.4.1",
+    "fastify-plugin": "^2.3.4",
+    "lodash": "^4.17.20",
+    "make-promises-safe": "^5.1.0",
+    "sequelize": "^6.3.5",
+    "tedious": "^9.2.1"
+  },
+  "devDependencies": {
+    "babel-register": "^6.26.0",
+    "sequelize-cli": "^6.2.0"
+  }
+}
