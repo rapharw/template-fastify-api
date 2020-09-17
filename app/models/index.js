@@ -1,11 +1,15 @@
 "use strict";
 
+require("babel-register");
+
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
 
-const config = Promise.resolve(require("../db-config")());
+const config = Promise.resolve(
+  require(path.resolve("app/config/database/db-config"))()
+);
 
 const db = {};
 
@@ -17,20 +21,17 @@ config.then((dbConfig) => {
     {
       host: dbConfig.host,
       dialect: dbConfig.dialect,
-      // dialectOptions: {
-      //   options: {
-      //     requestTimeout: dbConfig.requestTimeout,
-      //     encrypt: dbConfig.encrypt,
-      //     // Your tedious options here
-      //     useUTC: false,
-      //     dateFirst: 1,
-      //   },
-      //   pool: {
-      //     max: dbConfig.poolMaxConnection,
-      //     min: dbConfig.poolMinConnection,
-      //     idle: dbConfig.poolIdle,
-      //   },
-      // },
+      dialectOptions: {
+        options: {
+          requestTimeout: Number(dbConfig.requestTimeout),
+          encrypt: Boolean(dbConfig.encrypt),
+        },
+        pool: {
+          max: dbConfig.poolMaxConnection,
+          min: dbConfig.poolMinConnection,
+          idle: dbConfig.poolIdle,
+        },
+      },
       logging: false,
     }
   );
