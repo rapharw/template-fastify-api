@@ -9,10 +9,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.belongsTo(models.Company, {
-        foreignKey: "companyId",
-        as: "company",
-      });
+      User.belongsTo(models.Company);
+
+      User.hasOne(models.LogWorkUser);
     }
   }
   User.init(
@@ -24,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
       email: DataTypes.STRING,
-      companyId: DataTypes.UUID,
     },
     {
       sequelize,

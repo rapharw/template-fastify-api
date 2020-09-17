@@ -1,26 +1,11 @@
-// Load Environment Variables per File
 require("dotenv").config({
   path: process.env.NODE_ENV === "test" ? ".env.testing" : ".env",
 });
 
 require("make-promises-safe");
+require("babel-register");
 
-const fastify = require("fastify")({
-  logger: true,
-});
+const path = require("path");
+const startServer = require(path.resolve("app/config/fastify/fastify-config"));
 
-// loading db config
-fastify.register(require("./app/models/index"));
-fastify.register(require("./app/routes/hello-world-route"));
-
-// start server
-const start = async () => {
-  try {
-    await fastify.listen(3000);
-  } catch (err) {
-    fastify.log.error(err);
-    process.exit(1);
-  }
-};
-
-start();
+startServer();

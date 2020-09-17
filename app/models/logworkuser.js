@@ -9,9 +9,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      LogWorkUser.hasMany(models.User, {
-        as: "user",
-      });
     }
   }
   LogWorkUser.init(
@@ -20,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         primaryKey: true,
       },
-      userId: DataTypes.UUID,
       startTime: DataTypes.DATE,
       endTime: DataTypes.DATE,
     },

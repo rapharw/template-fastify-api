@@ -9,9 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Company.hasMany(models.Company, {
-        as: "user",
-      });
+      Company.hasMany(models.User);
     }
   }
   Company.init(
