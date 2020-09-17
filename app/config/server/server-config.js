@@ -9,6 +9,6 @@ const fastify = require("fastify")({
 fastify.register(require(path.resolve("app/models/index")));
 
 // load routes
-fastify.register(require(path.resolve("app/routes/hello-world-route")));
+fastify.register(require(path.resolve("app/routes/index")));
 
 module.exports = async () => await fastify.listen(3000);

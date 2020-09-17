@@ -6,6 +6,6 @@ require("make-promises-safe");
 require("babel-register");
 
 const path = require("path");
-const startServer = require(path.resolve("app/config/fastify/fastify-config"));
+const startServer = require(path.resolve("app/config/server/server-config"));
 
 startServer();
