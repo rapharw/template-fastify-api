@@ -10,7 +10,7 @@ const fastify = require("fastify")({
 });
 
 // loading db config
-fastify.register(require("./app/database/models/index"));
+fastify.register(require("./app/models/index"));
 fastify.register(require("./app/routes/hello-world-route"));
 
 // start server
