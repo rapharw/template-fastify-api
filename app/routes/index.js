@@ -15,6 +15,7 @@ async function loadRoutes(fastify, options) {
       const pluginRoute = require(path.join(__dirname, file));
       const prefix = file.replace("-route.js", "");
 
+      // register route and prefix with name of file
       fastify.register(pluginRoute, { prefix: prefix });
     });
 }
