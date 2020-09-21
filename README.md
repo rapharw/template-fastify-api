@@ -1,6 +1,10 @@
-# Create a file .env
+### Run the project
 
-### database environment variables
+#### Step 1
+##### Set environment variables OR create a file .env
+The values must have the above environment variables:
+
+###### database
 
 ```
 DATABASE_HOST=

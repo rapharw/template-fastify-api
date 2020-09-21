@@ -16,10 +16,12 @@ module.exports = (sequelize, DataTypes) => {
       User.hasOne(models.LogWorkUser);
     }
   }
+
   User.init(
     {
       id: {
         type: DataTypes.UUID,
+          defaultValue: sequelize.UUIDV4,
         primaryKey: true,
       },
       firstName: DataTypes.STRING,

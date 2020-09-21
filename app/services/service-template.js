@@ -11,6 +11,7 @@ class ServiceTemplate {
     try {
       return await this._repo.findAll();
     } catch (e) {
+      console.log(e);
       throw e;
     }
   }

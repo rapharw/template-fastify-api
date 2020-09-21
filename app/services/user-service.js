@@ -17,7 +17,7 @@ class UserService extends ServiceTemplate {
       );
       return await super.findAll();
     } catch (err) {
-      console.log("error findAll " + err);
+      console.log("error findddddAll " + err);
       throw new Error("Error on findAll Users");
     }
   }

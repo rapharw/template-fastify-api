@@ -9,9 +9,11 @@ const fastify = require("fastify")({
 fastify.register(require(path.resolve("app/config/handler/error-handler")));
 
 // load models
-fastify.register(require(path.resolve("app/models/index")));
+const sequelize = require(path.resolve("app/models/index"));
+fastify.register(sequelize);
+fastify.decorate('dbSequelize', sequelize);
 
 // load routes
 fastify.register(require(path.resolve("app/routes/index")));
 
-module.exports = async () => await fastify.listen(process.env.PORT || 3000);
+module.exports = async () => fastify.listen(process.env.PORT || 3000);

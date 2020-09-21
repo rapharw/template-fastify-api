@@ -1,10 +1,10 @@
 const RepositoryTemplate = require("./repository-template");
 const path = require("path");
-const User = require(path.resolve("app/models/user"));
+const db = require(path.resolve("app/models"))();
 
 class UserRepository extends RepositoryTemplate {
   constructor() {
-    super(User);
+    super(db.sequelize.models.User);
     console.log("repository - UserRepository - constructor");
   }
 }
