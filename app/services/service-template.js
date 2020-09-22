@@ -2,50 +2,27 @@
 
 class ServiceTemplate {
   constructor(repo) {
-    console.log("service - ServiceTemplate - constructor");
-    console.log(repo);
     this._repo = repo;
   }
 
   async findAll() {
-    try {
-      return await this._repo.findAll();
-    } catch (e) {
-      console.log(e);
-      throw e;
-    }
+      return this._repo.findAll();
   }
 
   async findById(id) {
-    try {
-      return await this._repo.findById(id);
-    } catch (e) {
-      throw e;
-    }
+      return this._repo.findById(id);
   }
 
   async save(data) {
-    try {
-      return await this._repo.save(data);
-    } catch (e) {
-      throw e;
-    }
+      return this._repo.save(data);
   }
 
   async update(data, id) {
-    try {
-      return await this._repo.update(data, id);
-    } catch (e) {
-      throw e;
-    }
+      return this._repo.update(data, id);
   }
 
   async remove(id) {
-    try {
       return this._repo.destroy(id);
-    } catch (e) {
-      throw e;
-    }
   }
 }
 

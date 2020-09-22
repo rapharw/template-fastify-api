@@ -1,22 +1,15 @@
 const path = require("path");
 const UserService = require(path.resolve("app/services/user-service"));
 
-const findAll = async (request, reply) => {
-  try{
-    const userServiceInstance = new UserService();
-    return userServiceInstance.findAll();
-  }
-  catch (e) {
-    console.log(e);
-    throw e;
-  }
-};
+async function controllers(fastify, opts) {
 
-const findOne = async (request, reply) => {
-  return { hello: `World ${request.params.userId}` };
-};
+  const findAll = async (request, reply) => {
+    return new UserService().findAll();
+  };
 
-module.exports = {
-  findAll,
-  findOne,
-};
+  const findOne = async (request, reply) => {
+    return { hello: `World ${request.params.userId}` };
+  };
+}
+
+module.exports = controllers;
