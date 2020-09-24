@@ -1,12 +1,10 @@
 async function routes(fastify, options) {
-  const path = require("path");
-
-  const userController = require(path.resolve(
-    "app/controllers/user-controller"
-  ));
-
-  fastify.get("/", userController.findAll);
-  fastify.get("/:userId", userController.findOne);
+  fastify.get("/", async () => {
+    return 1;
+  });
+  fastify.get("/:userId", async () => {
+    return 2;
+  });
 }
 
 module.exports = routes;
