@@ -10,7 +10,9 @@ const path = require("path");
 
 // (optional) initialize here your Stream logger, and include on the fastify options below
 const fastify = require("fastify")({
-  logger: true,
+  logger: {
+    level: process.env.LOGGER_LEVEL || "info",
+  },
 });
 
 fastify.register(require(path.resolve("app/bootstrap")));

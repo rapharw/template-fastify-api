@@ -2,30 +2,22 @@ const path = require("path");
 const AutoLoad = require("fastify-autoload");
 
 module.exports = async function (fastify, opts) {
-  // load models
-  fastify.register(require(path.resolve("app/models/index")));
-
   // load plugins
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, "plugins"),
     options: Object.assign({}, opts),
   });
 
-  // load repositories
-  fastify.register(AutoLoad, {
-    dir: path.join(__dirname, "repositories"),
-    options: Object.assign({}, opts),
-    ignorePattern: /.*(-template|-repository).js/,
-  });
+  // load models (model ORM layer)
+  fastify.register(require(path.resolve("app/models/index")));
 
-  // load services
-  fastify.register(AutoLoad, {
-    dir: path.join(__dirname, "services"),
-    options: Object.assign({}, opts),
-    ignorePattern: /.*(-template|-service).js/,
-  });
+  // load repositories (database layer)
+  fastify.register(require(path.resolve("app/repositories/index")));
 
-  // load routes
+  // load services (business layer)
+  fastify.register(require(path.resolve("app/services/index")));
+
+  // load routes recursive (routes & handler layer). wich folder will have your own route. ex: "user" folder will have a "/user" route
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, "routes"),
     options: Object.assign({}, opts),
