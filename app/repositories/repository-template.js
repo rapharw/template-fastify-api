@@ -4,51 +4,55 @@ class RepositoryTemplate {
   }
 
   async findAll() {
-    try {
-      return await this._model.findAll();
-    } catch (error) {
-      throw Error(error);
-    }
+    return await this._model.findAll();
   }
 
   async findById(id) {
-    try {
-      return await this._model.findOne({
-        where: {
-          id: id,
+    return await this._model.findOne({
+      where: {
+        id: id,
+      },
+    });
+  }
+
+  async findAllWithIncludesInnerJoin() {
+    return await this._model.findAll({
+      include: [
+        {
+          required: true,
+          all: true,
+          nested: true,
         },
-      });
-    } catch (error) {
-      throw Error(error);
-    }
+      ],
+    });
+  }
+
+  async findAllWithIncludesLeftJoin() {
+    return await this._model.findAll({
+      include: [
+        {
+          required: false,
+          all: true,
+          nested: true,
+        },
+      ],
+    });
   }
 
   async save(data) {
-    try {
-      return await this._model.create(data);
-    } catch (error) {
-      throw Error(error);
-    }
+    return await this._model.create(data);
   }
 
   async update(id, data) {
-    try {
-      return await this._model.update(data, {
-        where: {
-          id: id,
-        },
-      });
-    } catch (error) {
-      throw Error(error);
-    }
+    return await this._model.update(data, {
+      where: {
+        id: id,
+      },
+    });
   }
 
   async remove(id) {
-    try {
-      return this._model.destroy({ where: { id: id } });
-    } catch (error) {
-      throw Error(error);
-    }
+    return this._model.destroy({ where: { id: id } });
   }
 }
 

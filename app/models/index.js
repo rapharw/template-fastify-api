@@ -12,10 +12,11 @@ const basename = path.basename(__filename);
 const db = {};
 
 async function loadModels(fastify, opts) {
+  let logger = fastify.logger();
+  
   config.then((dbConfig) => {
     fs.readdirSync(__dirname)
       .filter((file) => {
-        console.log(file);
         return (
           file.indexOf(".") !== 0 &&
           file !== basename &&
@@ -43,16 +44,16 @@ async function loadModels(fastify, opts) {
     dbConfig.instance
       .authenticate()
       .then((result) => {
-        console.log("database client start with success", { msg: result });
+        logger.info("database client start with success", { msg: result });
       })
       .catch((err) => {
-        console.log("error on authenticate database user", { error: err });
+        logger.error("error on authenticate database user", { error: err });
       });
 
     // db.sequelize = sequelize;
     // db.Sequelize = Sequelize;
 
-    fastify.decorate("db", db);
+    fastify.decorate("models", () => db);
   });
 }
 
