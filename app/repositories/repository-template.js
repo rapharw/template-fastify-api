@@ -1,59 +1,58 @@
 class RepositoryTemplate {
   constructor(model) {
-    console.log("CONSTRUCTOR repo-template");
-    console.log(model);
     this._model = model;
   }
 
   async findAll() {
-    try {
-      console.log("DENTRO DO FINDALL() repo-template")
-      console.log(this);
-      return await this._model.findAll();
-    } catch (error) {
-      console.log(error);
-      throw Error(error);
-    }
+    return await this._model.findAll();
   }
 
   async findById(id) {
-    try {
-      return await this._model.findAll({
-        where: {
-          id: id,
+    return await this._model.findOne({
+      where: {
+        id: id,
+      },
+    });
+  }
+
+  async findAllWithIncludesInnerJoin() {
+    return await this._model.findAll({
+      include: [
+        {
+          required: true,
+          all: true,
+          nested: true,
         },
-      });
-    } catch (error) {
-      throw Error(error);
-    }
+      ],
+    });
+  }
+
+  async findAllWithIncludesLeftJoin() {
+    return await this._model.findAll({
+      include: [
+        {
+          required: false,
+          all: true,
+          nested: true,
+        },
+      ],
+    });
   }
 
   async save(data) {
-    try {
-      return await this._model.create(data);
-    } catch (error) {
-      throw Error(error);
-    }
+    return await this._model.create(data);
   }
 
   async update(id, data) {
-    try {
-      return await this._model.update(data, {
-        where: {
-          id: id,
-        },
-      });
-    } catch (error) {
-      throw Error(error);
-    }
+    return await this._model.update(data, {
+      where: {
+        id: id,
+      },
+    });
   }
 
   async remove(id) {
-    try {
-      return this._model.destroy({ where: { id: id } });
-    } catch (error) {
-      throw Error(error);
-    }
+    return this._model.destroy({ where: { id: id } });
   }
 }
 
