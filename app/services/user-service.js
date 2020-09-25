@@ -1,25 +1,16 @@
-const ServiceTemplate = require("./service-template");
-const path = require("path");
-const UserRepository = require(path.resolve(
-  "app/repositories/user-repository"
-));
-
-class UserService extends ServiceTemplate {
-  constructor() {
-    super(new UserRepository());
-    console.log("service - UserService - constructor");
+class UserService {
+  constructor(db, repositories) {
+    let userModel = db.User;
+    console.log(repositories);
+    this._userRepository = new repositories.userRepository(userModel);
   }
 
-  async findAll() {
-    try {
-      console.log(
-        "******************* findAll do meu userSERVICE *******************"
-      );
-      return await super.findAll();
-    } catch (err) {
-      console.log("error findddddAll " + err);
-      throw new Error("Error on findAll Users");
-    }
+  async findAllUsers() {
+    return this._userRepository.findAll();
+  }
+
+  async findUserById(id) {
+    return this._userRepository.findById(id);
   }
 }
 

@@ -1,24 +1,19 @@
 class RepositoryTemplate {
   constructor(model) {
-    console.log("CONSTRUCTOR repo-template");
-    console.log(model);
     this._model = model;
   }
 
   async findAll() {
     try {
-      console.log("DENTRO DO FINDALL() repo-template")
-      console.log(this);
       return await this._model.findAll();
     } catch (error) {
-      console.log(error);
       throw Error(error);
     }
   }
 
   async findById(id) {
     try {
-      return await this._model.findAll({
+      return await this._model.findOne({
         where: {
           id: id,
         },
