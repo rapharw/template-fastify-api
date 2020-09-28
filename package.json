@@ -26,9 +26,12 @@
     "fastify": "^3.4.1",
     "fastify-autoload": "^3.1.0",
     "fastify-plugin": "^2.3.4",
+    "fastify-swagger": "^3.3.0",
+    "fluent-schema": "^1.0.4",
     "lodash": "^4.17.20",
     "make-promises-safe": "^5.1.0",
     "sequelize": "^6.3.5",
+    "swagger-ui": "^3.34.0",
     "tedious": "^9.2.1"
   },
   "devDependencies": {
