@@ -3,6 +3,7 @@ const userController = "userController";
 const fp = require("fastify-plugin");
 
 module.exports = fp(async (fastify, opts) => {
+
   const logger = fastify.logger();
   const models = fastify.models();
   const repositories = fastify.repositories();
@@ -10,7 +11,6 @@ module.exports = fp(async (fastify, opts) => {
   fastify.decorate(
     `${userController}_findAll`,
     () => async (request, reply) => {
-      console.log(repositories);
       const userService = new fastify.userService(logger, models, repositories);
       return userService.findAllUsers();
     }
