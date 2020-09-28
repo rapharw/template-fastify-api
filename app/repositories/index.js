@@ -26,5 +26,5 @@ module.exports = fp(async (fastify, opts) => {
       repositories[`${prefix}Repository`] = repo;
     });
 
-  fastify.decorate(`repositories`, repositories);
+  fastify.decorate(`repositories`, () => repositories);
 });

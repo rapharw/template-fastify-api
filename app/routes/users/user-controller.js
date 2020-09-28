@@ -2,17 +2,15 @@
 const userController = "userController";
 const fp = require("fastify-plugin");
 
-// the use of fastify-plugin is required to be able
-// to export the decorators to the outer scope
-
 module.exports = fp(async (fastify, opts) => {
   const logger = fastify.logger();
-  const models = fastify.db;
-  const repositories = fastify.repositories;
+  const models = fastify.models();
+  const repositories = fastify.repositories();
 
   fastify.decorate(
     `${userController}_findAll`,
     () => async (request, reply) => {
+      console.log(repositories);
       const userService = new fastify.userService(logger, models, repositories);
       return userService.findAllUsers();
     }
@@ -26,4 +24,10 @@ module.exports = fp(async (fastify, opts) => {
       return userService.findUserById(id);
     }
   );
+
+  fastify.decorate(`${userController}_save`, () => async (request, reply) => {
+    const body = request.body;
+    const userService = new fastify.userService(logger, models, repositories);
+    return userService.createAUser(body);
+  });
 });
