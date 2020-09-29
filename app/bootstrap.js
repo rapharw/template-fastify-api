@@ -6,7 +6,6 @@ module.exports = async function (fastify, opts) {
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, "plugins"),
     options: Object.assign({}, opts),
-    ignorePattern: /.*(schema|schema-parameters|schema-parameters-schema|schema-response).js/,
   });
 
   // load models (model ORM layer)
@@ -19,36 +18,11 @@ module.exports = async function (fastify, opts) {
   fastify.register(require(path.resolve("app/services/index")));
 
   // load swagger
-  fastify.register(require("fastify-swagger"), {
-    routePrefix: "/documentation",
-    swagger: {
-      info: {
-        title: "Test swagger",
-        description: "testing the fastify swagger api",
-        version: "1.0.0",
-      },
-      securityDefinitions: {
-        apiKey: {
-          type: "apiKey",
-          name: "apiKey",
-          in: "header",
-        },
-      },
-      host: "localhost:3000",
-      schemes: ["http"],
-      consumes: ["application/json"],
-      produces: ["application/json"],
-    },
-    exposeRoute: true,
-  });
+  fastify.register(require(path.resolve("app/swagger/index")));
 
   // load routes recursive (routes & handler layer). wich folder will have your own route. ex: "user" folder will have a "/user" route
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, "routes"),
     options: Object.assign({}, opts),
-  });
-
-  fastify.ready(async () => {
-    fastify.swagger();
   });
 };
