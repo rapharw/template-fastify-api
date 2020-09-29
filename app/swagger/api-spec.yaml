@@ -1,0 +1,91 @@
+openapi: 3.0.0
+servers: []
+info:
+  version: "1.0.0"
+  title: Template-Fastify-Api
+  description: >-
+    This is an APi Documentation of Template-Fastify-Api.
+paths:
+  /users:
+    get:
+      summary: List all Users
+      parameters:
+        - in: query
+          name: companyId
+          schema:
+            type: string
+          description: Filter by company Id, to collect the result set of users filtered
+      description: >-
+        This operation return a list of users
+      responses:
+        "200":
+          description: OK
+      tags:
+        - User
+    post:
+      summary: Create an User
+      description: >-
+        This operation return a list of users
+      responses:
+        "200":
+          description: OK
+      tags:
+        - User
+  /users/{id}:
+    get:
+      summary: Get an user by ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: UUID char of the user to get
+      responses:
+        "200":
+          description: OK
+      tags:
+        - User
+    patch:
+      summary: Update an user by ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: UUID char of the user to update
+      responses:
+        "200":
+          description: OK
+      tags:
+        - User
+    delete:
+      summary: Delete an user by ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: UUID char of the user to delete
+      responses:
+        "200":
+          description: OK
+      tags:
+        - User
+security:
+  - implicit:
+      - read
+      - write
+components:
+  schemas: {}
+  securitySchemes:
+    implicit:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: "http://example.com/oauth/auth"
+          scopes:
+            write: allows modifying resources
+            read: allows reading resources

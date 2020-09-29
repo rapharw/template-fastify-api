@@ -22,10 +22,13 @@
   },
   "homepage": "https://github.com/rapharw/template-fastify-api#readme",
   "dependencies": {
+    "cls-hooked": "^4.2.2",
     "dotenv": "^8.2.0",
     "fastify": "^3.4.1",
     "fastify-autoload": "^3.1.0",
     "fastify-plugin": "^2.3.4",
+    "fastify-swagger": "^3.3.0",
+    "js-yaml": "^3.14.0",
     "lodash": "^4.17.20",
     "make-promises-safe": "^5.1.0",
     "sequelize": "^6.3.5",

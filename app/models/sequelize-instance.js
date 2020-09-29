@@ -1,7 +1,13 @@
 "use strict";
 const Sequelize = require("sequelize");
 
+// transaction
+const cls = require("cls-hooked");
+const namespace = cls.createNamespace("cls-transaction-sequelize");
+
 async function sequelizeInstance() {
+  Sequelize.useCLS(namespace);
+
   const sequelize = new Sequelize(
     process.env.DATABASE_NAME,
     process.env.DATABASE_USER,

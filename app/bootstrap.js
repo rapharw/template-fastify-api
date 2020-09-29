@@ -17,9 +17,13 @@ module.exports = async function (fastify, opts) {
   // load services (business layer)
   fastify.register(require(path.resolve("app/services/index")));
 
+  // load swagger
+  fastify.register(require(path.resolve("app/swagger/index")));
+
   // load routes recursive (routes & handler layer). wich folder will have your own route. ex: "user" folder will have a "/user" route
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, "routes"),
     options: Object.assign({}, opts),
+    ignorePattern: /.*(-filter).js/,
   });
 };

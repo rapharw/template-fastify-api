@@ -13,7 +13,7 @@ const db = {};
 
 async function loadModels(fastify, opts) {
   let logger = fastify.logger();
-  
+
   config.then((dbConfig) => {
     fs.readdirSync(__dirname)
       .filter((file) => {
@@ -50,10 +50,10 @@ async function loadModels(fastify, opts) {
         logger.error("error on authenticate database user", { error: err });
       });
 
-    // db.sequelize = sequelize;
+    // db.sequelize = dbConfig.instance;
     // db.Sequelize = Sequelize;
-
     fastify.decorate("models", () => db);
+    fastify.decorate("sequelizeInstance", () => dbConfig.instance);
   });
 }
 

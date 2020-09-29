@@ -3,12 +3,14 @@ class RepositoryTemplate {
     this._model = model;
   }
 
-  async findAll() {
-    return await this._model.findAll();
+  async findAll(filter) {
+    return this._model.findAll({
+        where: filter,
+      });
   }
 
   async findById(id) {
-    return await this._model.findOne({
+    return this._model.findOne({
       where: {
         id: id,
       },
@@ -16,7 +18,7 @@ class RepositoryTemplate {
   }
 
   async findAllWithIncludesInnerJoin() {
-    return await this._model.findAll({
+    return this._model.findAll({
       include: [
         {
           required: true,
@@ -28,7 +30,7 @@ class RepositoryTemplate {
   }
 
   async findAllWithIncludesLeftJoin() {
-    return await this._model.findAll({
+    return this._model.findAll({
       include: [
         {
           required: false,
@@ -40,11 +42,11 @@ class RepositoryTemplate {
   }
 
   async save(data) {
-    return await this._model.create(data);
+    return this._model.create(data);
   }
 
   async update(id, data) {
-    return await this._model.update(data, {
+    return this._model.update(data, {
       where: {
         id: id,
       },
