@@ -3,8 +3,13 @@ class RepositoryTemplate {
     this._model = model;
   }
 
-  async findAll() {
-    return this._model.findAll();
+  async findAll(filter) {
+    console.log(filter);
+    if (filter)
+      return this._model.findAll({
+        where: filter,
+      });
+    else return this._model.findAll();
   }
 
   async findById(id) {

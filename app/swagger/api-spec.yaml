@@ -9,13 +9,19 @@ paths:
   /users:
     get:
       summary: List all Users
+      parameters:
+        - in: query
+          name: companyId
+          schema:
+            type: string
+          description: Filter by company Id, to collect the result set of users filtered
       description: >-
         This operation return a list of users
       responses:
         "200":
           description: OK
       tags:
-        - user
+        - User
     post:
       summary: Create an User
       description: >-
@@ -24,22 +30,50 @@ paths:
         "200":
           description: OK
       tags:
-        - user
+        - User
   /users/{id}:
     get:
-      summary: Get a user by ID
+      summary: Get an user by ID
       parameters:
         - in: path
           name: id
           schema:
-            type: integer
+            type: string
           required: true
           description: UUID char of the user to get
       responses:
         "200":
           description: OK
       tags:
-        - user
+        - User
+    patch:
+      summary: Update an user by ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: UUID char of the user to update
+      responses:
+        "200":
+          description: OK
+      tags:
+        - User
+    delete:
+      summary: Delete an user by ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: UUID char of the user to delete
+      responses:
+        "200":
+          description: OK
+      tags:
+        - User
 security:
   - implicit:
       - read
