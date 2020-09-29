@@ -19,3 +19,20 @@ DATABASE_DIALECT=mssql
 DATABASE_REQUEST_TIMEOUT=
 DATABASE_ENCRYPT=true
 ```
+
+#### VSCode Extensions
+ESLint
+Prettier - Code formatter
+OpenAPI (Swagger) Editor
+Swagger Viewer
+YAML
+
+
+#### Postman
+https://www.getpostman.com/collections/7549e8645fb91026ba1e
+
+
+#### Swagger
+
+See more: https://swagger.io/docs/specification/basic-structure/
+

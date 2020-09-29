@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/rapharw/template-fastify-api#readme",
   "dependencies": {
+    "cls-hooked": "^4.2.2",
     "dotenv": "^8.2.0",
     "fastify": "^3.4.1",
     "fastify-autoload": "^3.1.0",

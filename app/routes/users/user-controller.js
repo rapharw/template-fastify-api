@@ -10,6 +10,7 @@ const {
 module.exports = fp(async (fastify, opts) => {
   const logger = fastify.logger();
   const models = fastify.models();
+  const entitySequelize = fastify.sequelizeInstance();
   const repositories = fastify.repositories();
 
   fastify.decorate(
@@ -47,5 +48,13 @@ module.exports = fp(async (fastify, opts) => {
     const body = getBody(logger, request);
     const userService = new fastify.userService(logger, models, repositories);
     return userService.updateUserById(id, body);
+  });
+
+  fastify.decorate(`${userController}_renew`, () => async (request, reply) => {
+    const id = getPathParamId(logger, request);
+    const body = getBody(logger, request);
+
+    const userService = new fastify.userService(logger, models, repositories);
+    return userService.createUserExcludingOld(id, body, entitySequelize);
   });
 });

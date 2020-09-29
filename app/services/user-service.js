@@ -59,6 +59,22 @@ class UserService {
       throw e;
     }
   }
+
+  async createUserExcludingOld(id, data, entitySequelize) {
+    try {
+      this._logger.debug(`Creating an user and excluding old ${id} | ${data}`);
+      if (this.findUserById(id)) {
+        return entitySequelize.transaction((tx) => {
+          data.id = id;
+          return Promise.all([this.deleteUserById(id), this.createAUser(data)]);
+        });
+      }
+    } catch (e) {
+      let msg = `Error on delete an user ${id}`;
+      this._logger.error(msg + ` | ${e}`);
+      throw e;
+    }
+  }
 }
 
 module.exports = UserService;
