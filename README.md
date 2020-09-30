@@ -53,6 +53,8 @@ Import this Collection on your Postman to start use de API Client.
 
 https://www.getpostman.com/collections/7549e8645fb91026ba1e
 
+![Postman](./screenshots/readme-postman.GIF)
+
 ---
 
 ## Main Structure
@@ -127,7 +129,7 @@ DATABASE_ENCRYPT=true
 npm start
 ```
 
-![Diagram](./screenshots/readme-started.GIF)
+![Started](./screenshots/readme-started.GIF)
 
 ### After the application starts, assuming that you are on the localhost:3000, we can access this URL's:
 
@@ -135,7 +137,7 @@ npm start
 
 `Swagger Documentation`: http://localhost:3000/documentation
 
-![Diagram](./screenshots/readme-swagger.GIF)
+![Swagger](./screenshots/readme-swagger.GIF)
 
 ---
 
@@ -189,7 +191,7 @@ This folder contains the routes, controllers and filters.
 
 **Example of a route `users`:**
 
-![Main Structure](./screenshots/readme-routes.GIF)
+![Routes](./screenshots/readme-routes.GIF)
 
 **The route `/users` will be created.**
 
@@ -205,7 +207,7 @@ This folder contains the routes, controllers and filters.
 
 > The file defines the handler of a request. In here, you will be able to get the injected objects from Fastify.
 
-![Main Structure](./screenshots/readme-controller-injected.GIF)
+![Controller](./screenshots/readme-controller-injected.GIF)
 
 On the line 10, we just simply get the Fastify instance (like `app` from Express).
 
