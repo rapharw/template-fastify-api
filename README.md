@@ -121,13 +121,21 @@ DATABASE_REQUEST_TIMEOUT=300000
 DATABASE_ENCRYPT=true
 ```
 
-## Once you have started the container with `MSSql`, you will be able to start your application
+### Once you have started the container with `MSSql`, you will be able to start your application
 
 ```
 npm start
 ```
 
 ![Diagram](./screenshots/readme-started.GIF)
+
+### After the application starts, assuming that you are on the localhost:3000, we can access this URL's:
+
+`Status of app`: http://localhost:3000/
+
+`Swagger Documentation`: http://localhost:3000/documentation
+
+![Diagram](./screenshots/readme-swagger.GIF)
 
 ---
 
