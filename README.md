@@ -16,6 +16,7 @@
 - [(TLDR) How it works](<#(tldr)-how-it-works>)
   - [Transaction Control](#transaction-control)
   - [Security](#security-with-helmet)
+  - [OpenAPI (Swagger)](<#openapi-(swagger)>)
 
 ---
 
@@ -275,6 +276,8 @@ This folder contains all the plugins and other global instances that you want to
 > [See more](https://helmetjs.github.io/)
 
 ### **swagger**
+
+##### **OpenAPI (Swagger)**
 
 This folder contains the API Documentation `api-spec.yaml`, and the `index.js`, which is responsable to create de Swagger UI of our API.
 
