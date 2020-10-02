@@ -14,6 +14,8 @@
 - [Setup and how to run locally](#setup-and-how-to-run-locally)
 - [(Quickly) How it works](<#(quickly)-how-it-works>)
 - [(TLDR) How it works](<#(tldr)-how-it-works>)
+  - [Transaction Control](#transaction-control)
+  - [Security](#security-with-helmet)
 
 ---
 
@@ -215,7 +217,11 @@ On the lines between 11 and 14, we get the injected plugins previously injected 
 
 ### **services**
 
-This layer is very important to adopt. In here, we will put all the business logic. Also here we can control our transactions (See `cls-hooked`).
+This layer is very important to adopt. In here, we will put all the business logic.
+
+#### **Transaction control**
+
+Also here, in the service layer, we can control our transactions (See `transaction control with cls-hooked`).
 
 ```javascript
 async someOperation(id, data, entitySequelize) {
@@ -262,6 +268,11 @@ This folder contains de Sequelize Models, that will be mapped in database.
 ### **plugins**
 
 This folder contains all the plugins and other global instances that you want to use on the entire project.
+
+#### **Security with Helmet**
+
+> **SECURITY**: The file helmet-support.js contains the configuration for security headers for application.
+> [See more](https://helmetjs.github.io/)
 
 ### **swagger**
 
