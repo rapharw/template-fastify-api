@@ -17,6 +17,7 @@
   - [Transaction Control](#transaction-control)
   - [Security](#security-with-helmet)
   - [OpenAPI (Swagger)](<#openapi-(swagger)>)
+  - [Error Handler](#error-handler)
 
 ---
 
