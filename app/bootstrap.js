@@ -3,7 +3,7 @@ const AutoLoad = require("fastify-autoload");
 
 module.exports = async function (fastify, opts) {
   // load errors
-  fastify.register(require(path.resolve("app/error/index")));
+  fastify.register(require(path.resolve("app/errors/index")));
 
   // load plugins
   fastify.register(AutoLoad, {

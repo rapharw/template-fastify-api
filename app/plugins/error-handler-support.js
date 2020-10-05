@@ -1,7 +1,7 @@
 const fp = require("fastify-plugin");
 const path = require("path");
 
-const BusinessError = require(path.resolve("app/error/business-error"));
+const BusinessError = require(path.resolve("app/errors/business-error"));
 
 module.exports = fp(async (fastify, options) => {
   fastify.setErrorHandler(function (error, request, reply) {
