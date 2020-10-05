@@ -1,8 +1,11 @@
 class UserService {
-  constructor(logger, models, repositories) {
+  constructor(logger, models, repositories, businessErrors) {
     this._logger = logger;
+
     let userModel = models.User;
-    this._userRepository = new repositories.userRepository(userModel);
+    this._userRepository = new repositories.UserRepository(userModel);
+
+    this._businessErrors = businessErrors;
   }
 
   async findAllUsers(filter) {
@@ -10,9 +13,10 @@ class UserService {
       this._logger.debug("Searching all users");
       return this._userRepository.findAll(filter);
     } catch (e) {
-      let msg = `Error on search all users`;
-      this._logger.error(msg + ` | ${e}`);
-      throw new Error(msg);
+      let error = new this._businessErrors.ListUsersNotFoundError();
+      this._logger.error(error.message + ` | ${e}`);
+
+      throw error;
     }
   }
 
@@ -21,9 +25,10 @@ class UserService {
       this._logger.debug(`Searching an user by id ${id}`);
       return this._userRepository.findById(id);
     } catch (e) {
-      let msg = `Error on search an user by id ${id}`;
-      this._logger.error(msg + ` | ${e}`);
-      throw e;
+      let error = new this._businessErrors.UserNotFoundError();
+      this._logger.error(error.message + ` | ${e}`);
+
+      throw error;
     }
   }
 
@@ -32,9 +37,10 @@ class UserService {
       this._logger.debug(`Creating an user ${data}`);
       return this._userRepository.save(data);
     } catch (e) {
-      let msg = `Error on create an user ${data}`;
-      this._logger.error(msg + ` | ${e}`);
-      throw e;
+      let error = new this._businessErrors.UserNotCreatedError();
+      this._logger.error(error.message + ` | ${e}`);
+
+      throw error;
     }
   }
 
@@ -43,9 +49,10 @@ class UserService {
       this._logger.debug(`Deleting an user ${id}`);
       return this._userRepository.remove(id);
     } catch (e) {
-      let msg = `Error on delete an user ${id}`;
-      this._logger.error(msg + ` | ${e}`);
-      throw e;
+      let error = new this._businessErrors.UserNotDeletedError();
+      this._logger.error(error.message + ` | ${e}`);
+
+      throw error;
     }
   }
 
@@ -54,9 +61,10 @@ class UserService {
       this._logger.debug(`Updating an user by id ${id} | ${data}`);
       if (this.findUserById(id)) return this._userRepository.update(id, data);
     } catch (e) {
-      let msg = `Error on delete an user ${id}`;
-      this._logger.error(msg + ` | ${e}`);
-      throw e;
+      let error = new this._businessErrors.UserNotUpdatedError();
+      this._logger.error(error.message + ` | ${e}`);
+
+      throw error;
     }
   }
 
@@ -70,9 +78,10 @@ class UserService {
         });
       }
     } catch (e) {
-      let msg = `Error on delete an user ${id}`;
-      this._logger.error(msg + ` | ${e}`);
-      throw e;
+      let error = new this._businessErrors.UserGenericError();
+      this._logger.error(error.message + ` | ${e}`);
+
+      throw error;
     }
   }
 }

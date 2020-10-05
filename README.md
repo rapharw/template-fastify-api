@@ -283,4 +283,50 @@ This folder contains the API Documentation `api-spec.yaml`, and the `index.js`, 
 
 [To see more OpenAPI basic structure](https://swagger.io/docs/specification/basic-structure/)
 
+### **Error Handler**
+
+> **ERROR HANDLER**: The file error-handler-support.js contains the configuration for the Fastify knows to handle and Error from our app.
+
+**_OBS:_**
+
+Look at the below image and see how it works. If an instance error of **BusinessError** will throw, our handler will treat this message properly. Otherwise, an generic message will throw.
+
+![Error Handler](./screenshots/readme-error-handler.GIF)
+
+### **errors** (Our Business Errors)
+
+This folder contains our business errors.
+
+> It its very important separate a dedicated class for each specific **error**.
+
+![Business Error](./screenshots/readme-business-errors.GIF)
+
+The **index.js** file load all the others filed to inject on the Fastify instance.
+
+The **business-error.js** file represents our **BusinessError** class, which our error handler plugin (**error-handler-support.js**) will catch properly.
+
+So, the others classes in this folder represents the specific error we want to catch.
+
+For example:
+
+On the **user-service.js**, we have this method:
+
+![Errors Example 1](./screenshots/readme-errors-example-1.GIF)
+
+If and error occurs, we throw a specific instance of **ListUsersNotFoundError**.
+
+The ListUsersNotFoundError class contains only the information of the message that will be throw.
+
+![Errors Example 2](./screenshots/readme-errors-example-2.GIF)
+
+After then, our error handler will treat properly, asking if the **instanceof** of error is **BusinessError**.
+
+And voilá!
+
+![Errors Example 3](./screenshots/readme-errors-example-3.GIF)
+
+## WHY ALL OF THIS STUFF? `SECURITY`!!!
+
+WE WONT OUR STACKTRACE ERROR EXPOSED TO THE CLIENT'S AND HACKER'S, RIGHT :wink: ?
+
 ---

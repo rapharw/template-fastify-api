@@ -21,9 +21,9 @@ module.exports = fp(async (fastify, opts) => {
     })
     .forEach((file) => {
       const repo = require(path.join(__dirname, file));
-      const prefix = file.replace("-repository.js", "");
+      const prefix = repo.name;
 
-      repositories[`${prefix}Repository`] = repo;
+      repositories[`${prefix}`] = repo;
     });
 
   fastify.decorate(`repositories`, () => repositories);
