@@ -25,7 +25,7 @@
   "dependencies": {
     "cls-hooked": "^4.2.2",
     "dotenv": "^8.2.0",
-    "fastify": "^3.4.1",
+    "fastify": "^3.5.1",
     "fastify-autoload": "^3.1.0",
     "fastify-helmet": "^5.0.3",
     "fastify-plugin": "^2.3.4",

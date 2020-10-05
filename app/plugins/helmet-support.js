@@ -3,7 +3,6 @@ const helmet = require("fastify-helmet");
 
 module.exports = fp(async (fastify, options) => {
   fastify.register(helmet, {
-    hidePoweredBy: { setTo: "none" },
     contentSecurityPolicy: {
       directives: {
         scriptSrc: [

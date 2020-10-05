@@ -6,6 +6,7 @@ const basename = path.basename(__filename);
 
 // the use of fastify-plugin is required to be able
 // to export the decorators to the outer scope
+const errors = {};
 
 module.exports = fp(async (fastify, opts) => {
   fs.readdirSync(__dirname)
@@ -18,9 +19,11 @@ module.exports = fp(async (fastify, opts) => {
       );
     })
     .forEach((file) => {
-      const svc = require(path.join(__dirname, file));
-      const prefix = svc.name;
+      const error = require(path.join(__dirname, file));
+      const prefix = error.name;
 
-      fastify.decorate(prefix, svc);
+      errors[prefix] = error;
     });
+
+  fastify.decorate(`businessErrors`, () => errors);
 });
