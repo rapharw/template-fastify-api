@@ -12,7 +12,7 @@
 - [Postman](#postman)
 - [Main Structure](#main-structure)
 - [Setup and how to run locally](#setup-and-how-to-run-locally)
-- [(Quickly) How it works](<#(quickly)-how-it-works>)
+- [(Quickly) How it works](<#(quickly)-how-the-project-works>)
 - [(TLDR) How it works](<#(tldr)-how-it-works>)
   - [Transaction Control](#transaction-control)
   - [Security](#security-with-helmet)
