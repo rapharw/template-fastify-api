@@ -175,19 +175,27 @@ You will see a file **index.js** in some folders (like models, services and repo
 
 ### Structure explained
 
-### **server.js**
+<br>
+
+![#Folder](./screenshots/readme-green-card.GIF) `Represent a Folder`
+
+![#1589F0](./screenshots/readme-blue-card.GIF) `Represent a File`
+
+<br>
+
+### ![#1589F0](./screenshots/readme-blue-card.GIF) **_server.js_**
 
 The **server.js** file contains the main config of project and the initial startup.
 
-### **app**
+### ![#Folder](./screenshots/readme-green-card.GIF) **APP**
 
 This folder contains de main structure of our application, with the routes, models, services and repositories.
 
-### **bootstrap.js**
+### ![#1589F0](./screenshots/readme-blue-card.GIF) **_bootstrap.js_**
 
 The **bootstrap.js** file have the responsability of load and register all of our plugins, routes, models and any kind of plugin that we need to use on the entire application.
 
-### **routes**
+### ![#Folder](./screenshots/readme-green-card.GIF) **ROUTES**
 
 This folder contains the routes, controllers and filters.
 
@@ -199,15 +207,15 @@ This folder contains the routes, controllers and filters.
 
 **The route `/users` will be created.**
 
-**user-route.js**
+![#1589F0](./screenshots/readme-blue-card.GIF) **_user-route.js_**
 
 > The file defines the route, the HTTP Methods and the controller to each route that will be handled.
 
-**user-filter.js**
+![#1589F0](./screenshots/readme-blue-card.GIF) **_user-filter.js_**
 
 > The file only treats the request parameters and request body.
 
-**user-controller.js**
+![#1589F0](./screenshots/readme-blue-card.GIF) **_user-controller.js_**
 
 > The file defines the handler of a request. In here, you will be able to get the injected objects from Fastify.
 
@@ -217,7 +225,7 @@ On the line 10, we just simply get the Fastify instance (like `app` from Express
 
 On the lines between 11 and 14, we get the injected plugins previously injected by the framework. For example, `fastify.models()` will return the models of sequelize.
 
-### **services**
+### ![#Folder](./screenshots/readme-green-card.GIF) **SERVICES**
 
 This layer is very important to adopt. In here, we will put all the business logic.
 
@@ -243,7 +251,7 @@ async someOperation(id, data, entitySequelize) {
 
 > **If the `someOperation()` method returns success on the operation and the `anotherOperation()` method returns an error, ALL transaction will be rolled back.**
 
-### **repositories**
+### ![#Folder](./screenshots/readme-green-card.GIF) **REPOSITORIES**
 
 This file contains only the operations of your specific model.
 
@@ -255,19 +263,19 @@ This file contains only the operations of your specific model.
 
 > The `this._model` reference is the model of Sequelize
 
-### **models**
+### ![#Folder](./screenshots/readme-green-card.GIF) **MODELS**
 
 This folder contains de Sequelize Models, that will be mapped in database.
 
-**sequelize-instance.js**
+![#1589F0](./screenshots/readme-blue-card.GIF) **_sequelize-instance.js_**
 
 > This file create an instance of Sequelize config with the environment variables provided by **.env** OR another way.
 
-**index.js**
+![#1589F0](./screenshots/readme-blue-card.GIF) **_index.js_**
 
 > This file will map all of our models/entities that exists on the folder **models**. Also the file create a connection with database, provided by **sequelize-instance.js**.
 
-### **plugins**
+### ![#Folder](./screenshots/readme-green-card.GIF) **PLUGINS**
 
 This folder contains all the plugins and other global instances that you want to use on the entire project.
 
@@ -276,7 +284,7 @@ This folder contains all the plugins and other global instances that you want to
 > **SECURITY**: The file helmet-support.js contains the configuration for security headers for application.
 > [See more](https://helmetjs.github.io/)
 
-### **swagger**
+### ![#Folder](./screenshots/readme-green-card.GIF) **SWAGGER**
 
 ##### **OpenAPI (Swagger)**
 
@@ -294,7 +302,7 @@ Look at the below image and see how it works. If an instance error of **Business
 
 ![Error Handler](./screenshots/readme-error-handler.GIF)
 
-### **errors** (Our Business Errors)
+### ![#Folder](./screenshots/readme-green-card.GIF) **ERRORS** (Our Business Errors)
 
 This folder contains our business errors.
 
@@ -308,7 +316,7 @@ The **business-error.js** file represents our **BusinessError** class, which our
 
 So, the others classes in this folder represents the specific error we want to catch.
 
-For example:
+## _For example_
 
 On the **user-service.js**, we have this method:
 
@@ -326,7 +334,7 @@ And voilá!
 
 ![Errors Example 3](./screenshots/readme-errors-example-3.GIF)
 
-## WHY ALL OF THIS STUFF? `SECURITY`!!!
+## WHY ALL OF THIS "STUFF"? `SECURITY`!!!
 
 WE WONT OUR STACKTRACE ERROR EXPOSED TO THE CLIENT'S AND HACKER'S, RIGHT :wink: ?
 
