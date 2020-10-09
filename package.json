@@ -30,6 +30,7 @@
     "fastify-helmet": "^5.0.3",
     "fastify-plugin": "^2.3.4",
     "fastify-swagger": "^3.3.0",
+    "js-yaml": "^3.14.0",
     "lodash": "^4.17.20",
     "make-promises-safe": "^5.1.0",
     "sequelize": "^6.3.5",

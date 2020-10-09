@@ -23,7 +23,7 @@ module.exports = fp(async (fastify, opts) => {
       const repo = require(path.join(__dirname, file));
       const prefix = repo.name;
 
-      repositories[`${prefix}`] = repo;
+      repositories[prefix] = repo;
     });
 
   fastify.decorate(`repositories`, () => repositories);

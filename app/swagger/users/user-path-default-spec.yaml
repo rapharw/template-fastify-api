@@ -1,0 +1,64 @@
+get:
+  operationId: findAllUsers
+  summary: List all Users
+  description: >-
+    This operation return a list of users
+  parameters:
+    - in: query
+      name: companyId
+      schema:
+        type: string
+      description: Filter by company Id, to collect the result set of users filtered
+    - in: query
+      name: email
+      schema:
+        type: string
+      description: Filter by email, to collect the result set of users filtered
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          example:
+            - fullName: Raphael Wanderley
+              firstName: Raphael
+              lastName: Wanderley
+              email: rapha.rw@gmail.com
+              id: 16f49fc5-7630-4f10-893c-584c8575230a
+              createdAt: "2020-10-09T13:21:45.867Z"
+              updatedAt: "2020-10-09T13:21:45.867Z"
+              CompanyId: null
+              TypeUserId: null
+  tags:
+    - User
+post:
+  operationId: createUser
+  summary: Create an User
+  description: >-
+    This operation return a list of users
+  requestBody:
+    description: User to create
+    required: true
+    content:
+      "application/json":
+        example:
+          firstName: Raphael
+          lastName: Wanderley
+          email: rapha.rw@gmail.com
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          example:
+            fullName: Raphael Wanderley
+            firstName: Raphael
+            lastName: Wanderley
+            email: rapha.rw@gmail.com
+            id: 16f49fc5-7630-4f10-893c-584c8575230a
+            createdAt: "2020-10-09T13:21:45.867Z"
+            updatedAt: "2020-10-09T13:21:45.867Z"
+            CompanyId: null
+            TypeUserId: null
+  tags:
+    - User

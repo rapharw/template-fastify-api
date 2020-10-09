@@ -1,0 +1,107 @@
+get:
+  summary: Get an user by ID
+  parameters:
+    - in: path
+      name: id
+      schema:
+        type: string
+        format: UUID
+      required: true
+      description: UUID char of the user to get
+      example: 16f49fc5-7630-4f10-893c-584c8575230a
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          example:
+            fullName: Raphael Wanderley
+            firstName: Raphael
+            lastName: Wanderley
+            email: rapha.rw@gmail.com
+            id: 16f49fc5-7630-4f10-893c-584c8575230a
+            createdAt: "2020-10-09T13:21:45.867Z"
+            updatedAt: "2020-10-09T13:21:45.867Z"
+            CompanyId: null
+            TypeUserId: null
+  tags:
+    - User
+patch:
+  summary: Update an user by ID
+  parameters:
+    - in: path
+      name: id
+      schema:
+        type: string
+        format: UUID
+      required: true
+      description: UUID char of the user to update
+      example: 16f49fc5-7630-4f10-893c-584c8575230a
+  responses:
+    "200":
+      description: OK | Return how many rows updated
+      content:
+        application/json:
+          example: [1]
+    "400":
+      description: "Bad request"
+      content:
+        application/json:
+          example:
+            message: A validation error occurred when validating the body...
+            errors:
+              - should have required property 'lastName'
+              - should have required property 'email'
+  tags:
+    - User
+put:
+  summary: Recreate an user by ID
+  parameters:
+    - in: path
+      name: id
+      schema:
+        type: string
+        format: UUID
+      required: true
+      description: UUID char of the user to recreate
+  requestBody:
+    description: User to recreate
+    required: true
+    content:
+      "application/json":
+        example:
+          firstName: Raphael
+          lastName: Wanderley
+          email: rapha.rw@gmail.com
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          example:
+            fullName: Raphael Wanderley
+            firstName: Raphael
+            lastName: Wanderley
+            email: rapha.rw@gmail.com
+            id: 16f49fc5-7630-4f10-893c-584c8575230a
+            createdAt: "2020-10-09T13:21:45.867Z"
+            updatedAt: "2020-10-09T13:21:45.867Z"
+            CompanyId: null
+            TypeUserId: null
+  tags:
+    - User
+delete:
+  summary: Delete an user by ID
+  parameters:
+    - in: path
+      name: id
+      schema:
+        type: string
+        format: UUID
+      required: true
+      description: UUID char of the user to delete
+  responses:
+    "200":
+      description: Resource deleted successfully
+  tags:
+    - User

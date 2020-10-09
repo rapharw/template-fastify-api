@@ -7,6 +7,8 @@ const basename = path.basename(__filename);
 // the use of fastify-plugin is required to be able
 // to export the decorators to the outer scope
 
+const services = {};
+
 module.exports = fp(async (fastify, opts) => {
   fs.readdirSync(__dirname)
     .filter((file) => {
@@ -21,6 +23,8 @@ module.exports = fp(async (fastify, opts) => {
       const svc = require(path.join(__dirname, file));
       const prefix = svc.name;
 
-      fastify.decorate(prefix, svc);
+      services[prefix] = svc;
     });
+
+  fastify.decorate(`services`, () => services);
 });
