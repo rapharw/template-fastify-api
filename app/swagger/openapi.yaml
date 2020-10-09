@@ -1,0 +1,19 @@
+openapi: 3.0.0
+servers: []
+info:
+  version: "1.0.0"
+  title: Template-Fastify-Api
+  description: >-
+    This is an APi Documentation of Template-Fastify-Api.
+tags:
+  - name: User
+    description: User domain with all basic CRUD operations
+paths:
+  /users:
+    $ref: ./users/user-path-default-spec.yaml
+  /users/{id}:
+    $ref: ./users/user-path-by-id-spec.yaml
+components:
+  schemas:
+    User:
+      $ref: ./users/user-schema-spec.yaml

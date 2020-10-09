@@ -7,9 +7,16 @@ module.exports = fp(async (fastify, options) => {
     routePrefix: "/documentation",
     mode: "static",
     specification: {
-      path: path.resolve("app/swagger/api-spec.yaml"),
+      path: path.resolve("app/swagger/openapi.yaml"),
     },
     exposeRoute: true,
+
+    // ### dynamic mode ###
+    // host: "localhost",
+    // schemes: ["http"],
+    // consumes: ["application/json"],
+    // produces: ["application/json"],
+    // exposeRoute: true,
   });
 
   fastify.ready(async () => {

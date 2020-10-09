@@ -1,0 +1,34 @@
+type: object
+nullable: false
+properties:
+  fullName:
+    type: string
+    description: Append of informations of firstName and lastName. Only view.
+  id:
+    type: string
+    description: The uuid of a registered User.
+  firstName:
+    type: string
+    description: The first name of an User
+  lastName:
+    type: string
+    description: The last name of an User
+  email:
+    type: string
+    description: The email of an User
+  createdAt:
+    type: string
+    description: Represents the date of created registry of the user.
+  updatedAt:
+    type: string
+    description: Represents the date of last update on registry of the user.
+  CompanyId:
+    type: string
+    description: The reference to the uuid of Company.
+  TypeUserId:
+    type: string
+    description: The reference to the uuid of TypeUser.
+required:
+  - firstName
+  - lastName
+  - email

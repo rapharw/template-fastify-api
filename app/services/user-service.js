@@ -1,17 +1,15 @@
 class UserService {
   constructor(logger, models, repositories, businessErrors) {
     this._logger = logger;
-
     let userModel = models.User;
     this._userRepository = new repositories.UserRepository(userModel);
-
     this._businessErrors = businessErrors;
   }
 
   async findAllUsers(filter) {
     try {
       this._logger.debug("Searching all users");
-      return this._userRepository.findAll(filter);
+      return await this._userRepository.findAll(filter);
     } catch (e) {
       let error = new this._businessErrors.ListUsersNotFoundError();
       this._logger.error(error.message + ` | ${e}`);
@@ -23,7 +21,7 @@ class UserService {
   async findUserById(id) {
     try {
       this._logger.debug(`Searching an user by id ${id}`);
-      return this._userRepository.findById(id);
+      return await this._userRepository.findById(id);
     } catch (e) {
       let error = new this._businessErrors.UserNotFoundError();
       this._logger.error(error.message + ` | ${e}`);
@@ -34,8 +32,10 @@ class UserService {
 
   async createAUser(data) {
     try {
-      this._logger.debug(`Creating an user ${data}`);
-      return this._userRepository.save(data);
+      this._logger.debug(`Creating an user...`);
+      this._logger.debug(data);
+
+      return await this._userRepository.save(data);
     } catch (e) {
       let error = new this._businessErrors.UserNotCreatedError();
       this._logger.error(error.message + ` | ${e}`);
@@ -47,7 +47,7 @@ class UserService {
   async deleteUserById(id) {
     try {
       this._logger.debug(`Deleting an user ${id}`);
-      return this._userRepository.remove(id);
+      return await this._userRepository.remove(id);
     } catch (e) {
       let error = new this._businessErrors.UserNotDeletedError();
       this._logger.error(error.message + ` | ${e}`);
@@ -59,7 +59,8 @@ class UserService {
   async updateUserById(id, data) {
     try {
       this._logger.debug(`Updating an user by id ${id} | ${data}`);
-      if (this.findUserById(id)) return this._userRepository.update(id, data);
+      if (this.findUserById(id))
+        return await this._userRepository.update(id, data);
     } catch (e) {
       let error = new this._businessErrors.UserNotUpdatedError();
       this._logger.error(error.message + ` | ${e}`);
@@ -72,7 +73,7 @@ class UserService {
     try {
       this._logger.debug(`Creating an user and excluding old ${id} | ${data}`);
       if (this.findUserById(id)) {
-        return entitySequelize.transaction((tx) => {
+        return await entitySequelize.transaction((tx) => {
           data.id = id;
           return Promise.all([this.deleteUserById(id), this.createAUser(data)]);
         });
