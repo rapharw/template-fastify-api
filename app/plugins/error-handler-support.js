@@ -1,3 +1,7 @@
+/**
+ *  Error handler. Any error thrown will be handled here
+ */
+
 const fp = require("fastify-plugin");
 const path = require("path");
 
@@ -8,13 +12,16 @@ module.exports = fp(async (fastify, options) => {
     let statusCode = 0;
     let response;
 
+    const logger = fastify.logger();
+    logger.error(`ErrorHandler: ${error}`);
+  
     const { validation, validationContext } = error;
 
     // check if we have a validation error
     if (validation) {
       statusCode = 400;
 
-      let errorsMessage = [];
+      const errorsMessage = [];
       validation.forEach((element) => {
         errorsMessage.push(element.message);
       });
