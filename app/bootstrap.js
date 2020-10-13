@@ -6,14 +6,15 @@ const path = require("path");
 const AutoLoad = require("fastify-autoload");
 
 module.exports = async function (fastify, opts) {
-  // load errors
-  fastify.register(require(path.resolve("app/errors/index")));
-
+  
   // load plugins
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, "plugins"),
     options: Object.assign({}, opts),
   });
+
+  // load errors
+  fastify.register(require(path.resolve("app/errors/index")));
 
   // load models (model ORM layer)
   fastify.register(require(path.resolve("app/models/index")));

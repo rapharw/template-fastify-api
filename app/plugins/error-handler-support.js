@@ -12,6 +12,9 @@ module.exports = fp(async (fastify, options) => {
     let statusCode = 0;
     let response;
 
+    const logger = fastify.logger();
+    logger.error(`ErrorHandler: ${error}`);
+  
     const { validation, validationContext } = error;
 
     // check if we have a validation error

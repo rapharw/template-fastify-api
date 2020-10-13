@@ -21,6 +21,7 @@ async function sequelizeInstance() {
             options: {
               requestTimeout: Number(process.env.DATABASE_REQUEST_TIMEOUT),
               encrypt: Boolean(process.env.DATABASE_ENCRYPT),
+              validateBulkLoadParameters: true
             },
             pool: {
               max: process.env.DATABASE_POOL_MAX_CONNECTION,
