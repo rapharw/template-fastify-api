@@ -2,9 +2,8 @@
 require("dotenv").config({
   path: process.env.NODE_ENV === "test" ? ".env.testing" : ".env",
 });
-
 require("make-promises-safe");
-require("babel-register");
+
 
 // (optional) initialize here your Stream logger, and include on the fastify options below
 const fastify = require("fastify")({
@@ -13,6 +12,8 @@ const fastify = require("fastify")({
   },
 });
 
+
+//Initializing Fastify
 const path = require("path");
 fastify.register(require(path.resolve("app/bootstrap")));
 

@@ -10,13 +10,6 @@ module.exports = fp(async (fastify, options) => {
       path: path.resolve("app/swagger/openapi.yaml"),
     },
     exposeRoute: true,
-
-    // ### dynamic mode ###
-    // host: "localhost",
-    // schemes: ["http"],
-    // consumes: ["application/json"],
-    // produces: ["application/json"],
-    // exposeRoute: true,
   });
 
   fastify.ready(async () => {
