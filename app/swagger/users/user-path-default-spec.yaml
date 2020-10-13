@@ -45,6 +45,9 @@ post:
           firstName: Raphael
           lastName: Wanderley
           email: rapha.rw@gmail.com
+        schema:
+          User:
+            $ref: '#/components/schemas/User'
   responses:
     "200":
       description: OK

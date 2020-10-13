@@ -31,13 +31,11 @@
     "fastify-plugin": "^2.3.4",
     "fastify-swagger": "^3.3.0",
     "js-yaml": "^3.14.0",
-    "lodash": "^4.17.20",
     "make-promises-safe": "^5.1.0",
     "sequelize": "^6.3.5",
     "tedious": "^9.2.1"
   },
   "devDependencies": {
-    "babel-register": "^6.26.0",
     "sequelize-cli": "^6.2.0"
   }
 }

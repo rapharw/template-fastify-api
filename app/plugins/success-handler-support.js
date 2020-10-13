@@ -1,3 +1,7 @@
+/**
+ * Every successful return will be translated here, returning the respective statusCode
+ */
+
 const fp = require('fastify-plugin');
 
 const statusCode = {
@@ -8,6 +12,12 @@ const statusCode = {
 
 module.exports = fp(async (fastify, options) => {
 
+    /**
+     * Indicates statusCode 200 in the response. Request OK
+     * @param reply
+     * @param data
+     * @returns {{}|*}
+     */
     const ok = (reply, data) => {
         reply.code(statusCode.OK);
         if(data){
@@ -18,15 +28,20 @@ module.exports = fp(async (fastify, options) => {
         }
     };
 
+    /**
+     * Indicates statusCode 201 in the response. Resource created.
+     * @param reply
+     * @param data
+     * @returns {*}
+     */
     const created = (reply, data) => {
         reply.code(statusCode.CREATED);
         return data;
     };
 
+
     fastify.decorate('successHandler', () => {
-
         return { ok, created };
-
     });
 
 });

@@ -1,30 +1,18 @@
-"use strict";
+/**
+ * Loads all files (ignore index.js) on the current folder, placing them in the fastify instance <br>
+ * The instances can be obtained with fastify.services(); <br>
+ *
+ */
 const fp = require("fastify-plugin");
-const fs = require("fs");
 const path = require("path");
 const basename = path.basename(__filename);
 
-// the use of fastify-plugin is required to be able
-// to export the decorators to the outer scope
-
-const services = {};
-
 module.exports = fp(async (fastify, opts) => {
-  fs.readdirSync(__dirname)
-    .filter((file) => {
-      return (
-        file.indexOf(".") !== 0 &&
-        file !== basename &&
-        file.slice(-3) === ".js" &&
-        file !== "index.js"
-      );
-    })
-    .forEach((file) => {
-      const svc = require(path.join(__dirname, file));
-      const prefix = svc.name;
 
-      services[prefix] = svc;
-    });
-
-  fastify.decorate(`services`, () => services);
+  const dirName = __dirname;
+  const ignoredFiles = ["index.js"];
+  const decorateName = 'services';
+  
+  const loadPluginsInstances = fastify.loadPluginsInstances();
+  loadPluginsInstances(dirName, basename, ignoredFiles, decorateName);
 });

@@ -37,6 +37,18 @@ patch:
       required: true
       description: UUID char of the user to update
       example: 16f49fc5-7630-4f10-893c-584c8575230a
+  requestBody:
+    description: User to update
+    required: true
+    content:
+      "application/json":
+        example:
+          firstName: Raphael
+          lastName: Wanderley
+          email: rapha.rw@gmail.com
+        schema:
+          User:
+            $ref: '#/components/schemas/User'
   responses:
     "200":
       description: OK | Return how many rows updated

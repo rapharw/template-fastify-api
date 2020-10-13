@@ -1,30 +1,18 @@
-"use strict";
+/**
+ * Loads all files (ignore index.js and repository-template.js) on the current folder, placing them in the fastify instance <br>
+ * The instances can be obtained with fastify.repositories(); <br>
+ *
+ */
 const fp = require("fastify-plugin");
-const fs = require("fs");
 const path = require("path");
 const basename = path.basename(__filename);
 
-// the use of fastify-plugin is required to be able
-// to export the decorators to the outer scope
-const repositories = {};
-
 module.exports = fp(async (fastify, opts) => {
-  fs.readdirSync(__dirname)
-    .filter((file) => {
-      return (
-        file.indexOf(".") !== 0 &&
-        file !== basename &&
-        file.slice(-3) === ".js" &&
-        file !== "index.js" &&
-        file !== "repository-template.js"
-      );
-    })
-    .forEach((file) => {
-      const repo = require(path.join(__dirname, file));
-      const prefix = repo.name;
 
-      repositories[prefix] = repo;
-    });
-
-  fastify.decorate(`repositories`, () => repositories);
+  const dirName = __dirname;
+  const ignoredFiles = ["index.js", "repository-template.js"];
+  const decorateName = 'repositories';
+  
+  const loadPluginsInstances = fastify.loadPluginsInstances();
+  loadPluginsInstances(dirName, basename, ignoredFiles, decorateName);
 });
