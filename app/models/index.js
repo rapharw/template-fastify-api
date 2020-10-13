@@ -1,6 +1,3 @@
-
-
-require("babel-register");
 const fp = require("fastify-plugin");
 
 const config = Promise.resolve(require("./sequelize-instance")());
