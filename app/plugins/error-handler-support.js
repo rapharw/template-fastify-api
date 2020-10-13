@@ -1,3 +1,7 @@
+/**
+ *  Error handler. Any error thrown will be handled here
+ */
+
 const fp = require("fastify-plugin");
 const path = require("path");
 
@@ -14,7 +18,7 @@ module.exports = fp(async (fastify, options) => {
     if (validation) {
       statusCode = 400;
 
-      let errorsMessage = [];
+      const errorsMessage = [];
       validation.forEach((element) => {
         errorsMessage.push(element.message);
       });

@@ -1,3 +1,7 @@
+/**
+ * Load all errors, plugins, routes, services, models, repositories and swagger
+ */
+
 const path = require("path");
 const AutoLoad = require("fastify-autoload");
 

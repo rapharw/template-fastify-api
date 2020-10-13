@@ -1,11 +1,17 @@
-"use strict";
+/**
+ * Loads all files (ignore index.js), placing them in the fastify instance <br>
+ * The files can be obtained with fastify.services(); <br>
+ *
+ * Example: <br>
+ * const services = { <br>
+ *     UserService: require(...); <br>
+ * };<br>
+ */
+
 const fp = require("fastify-plugin");
 const fs = require("fs");
 const path = require("path");
 const basename = path.basename(__filename);
-
-// the use of fastify-plugin is required to be able
-// to export the decorators to the outer scope
 
 const services = {};
 
@@ -23,6 +29,7 @@ module.exports = fp(async (fastify, opts) => {
       const svc = require(path.join(__dirname, file));
       const prefix = svc.name;
 
+      // the required file "svc" will be inserted on "const services = {};" with name of file.
       services[prefix] = svc;
     });
 

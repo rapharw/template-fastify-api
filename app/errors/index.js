@@ -1,4 +1,13 @@
-"use strict";
+/**
+ * Loads all files (ignore index.js), placing them in the fastify instance <br>
+ * The files can be obtained with fastify.businessErrors(); <br>
+ *
+ * Example: <br>
+ * const errors = { <br>
+ *     ListUsersNotFoundError: require(...); <br>
+ * };<br>
+ */
+
 const fp = require("fastify-plugin");
 const fs = require("fs");
 const path = require("path");

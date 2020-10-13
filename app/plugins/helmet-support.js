@@ -1,3 +1,6 @@
+/**
+ * Configuration to Helmet Security
+ */
 const fp = require("fastify-plugin");
 const helmet = require("fastify-helmet");
 

@@ -1,4 +1,6 @@
-"use strict";
+/**
+ *  Returns a Pino Instance (default logger of Fastify)
+ */
 
 const fp = require("fastify-plugin");
 
