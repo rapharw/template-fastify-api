@@ -1,6 +1,6 @@
 # Template Fastify Api
 
-> This is a NodeJS application that provides the CRUD Operations exposed with an API, using the framework Fastify, Sequelize, Swagger and Security.
+> This is a Node JS Application that provides the CRUD Operations exposed with an API, using the framework Fastify, Sequelize, Swagger and Security.
 
 ---
 
