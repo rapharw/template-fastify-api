@@ -334,8 +334,6 @@ And voilá!
 
 ![Errors Example 3](./screenshots/readme-errors-example-3.GIF)
 
-## WHY ALL OF THIS "STUFF"? `SECURITY`!!!
-
-WE WONT OUR STACKTRACE ERROR EXPOSED TO THE CLIENT'S AND HACKER'S, RIGHT :wink: ?
+## WHY ALL OF THIS "STUFF"?  `SECURITY
 
 ---
